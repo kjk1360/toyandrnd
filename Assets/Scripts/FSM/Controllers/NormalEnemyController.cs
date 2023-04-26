@@ -8,6 +8,11 @@ public class NormalEnemyController : BaseController, IDropItem, IPooledObject
     public float speed;
     public GameObject itemPrefab;
     public float dropChance;
+    //public Rigidbody2D myBody;
+    private Vector3 previousPosition;
+    float horizontal = 0f;
+    float vertical = 0f;
+    int movetype = 0;
 
     GameObject IDropItem.itemPrefab => itemPrefab;
     float IDropItem.dropChance => dropChance;
@@ -15,9 +20,48 @@ public class NormalEnemyController : BaseController, IDropItem, IPooledObject
     public override void InitializeController()
     {
         base.InitializeController();
+        previousPosition = transform.position;
         MaxHP += PassiveManager.Instance.curLV;
         player = SpawnManager.Instance.player.GetComponent<PlayerController>();// GameObject.FindGameObjectWithTag("Player");
         ChangeState(new NormalEnemyChaseState());
+    }
+    public int GetMyBodyMoveType()
+    {
+        Vector3 currentPosition = transform.position;
+        Vector3 movementDirection = currentPosition - previousPosition;
+
+        horizontal = movementDirection.x;
+        vertical = movementDirection.y;
+
+        if (Mathf.Abs(horizontal) > Mathf.Abs(vertical))
+        {
+            if (horizontal > 0)
+            {
+                // 오른쪽으로 움직임
+                movetype = 2;
+            }
+            else
+            {
+                // 왼쪽으로 움직임
+                movetype = 1;
+            }
+        }
+        else
+        {
+            if (vertical > 0)
+            {
+                // 위로 움직임
+                movetype = 3;
+            }
+            else
+            {
+                // 아래로 움직임
+                movetype = 0;
+            }
+        }
+
+        previousPosition = currentPosition;
+        return movetype;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

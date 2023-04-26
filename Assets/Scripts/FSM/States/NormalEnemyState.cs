@@ -21,6 +21,8 @@ public class NormalEnemyChaseState : State
             // 플레이어를 향해 이동
             Vector3 direction = (enemy.player.transform.position - enemy.transform.position).normalized;
             enemy.transform.position += direction * enemy.speed * Time.deltaTime;
+
+            enemy.SetMoveType(enemy.GetMyBodyMoveType());
         }
     }
 
@@ -70,6 +72,7 @@ public class NormalEnemyDeadState : State
         {
             enemy.TryDropItem();
             PassiveManager.Instance.KillEnemy();
+            SpawnManager.Instance.curLiveEnemy--;
             SpawnManager.Instance.enemyObjectPool.ReturnToPool(enemy.gameObject);
             //Object.Destroy(enemy.gameObject);
         }

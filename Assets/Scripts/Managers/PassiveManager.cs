@@ -34,6 +34,7 @@ public class PassiveManager : MonoBehaviour
             MaxExp *= 2;
             curLV++;
             SpawnManager.Instance.spawnInterval -= 0.1f;
+            SpawnManager.Instance.maxSpawnEnemyCount *= 2;
             if (SpawnManager.Instance.spawnInterval <= 0)
             {
                 SpawnManager.Instance.spawnInterval = 0.01f;

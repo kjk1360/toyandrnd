@@ -22,13 +22,24 @@ public abstract class BaseController : MonoBehaviour
     public float MaxHP;
     // ScriptableObject·Î ¸¸µç GameEvent
     public UnityEvent gameEvtHPChange;
+    public Animator animator;
 
     public State currentState;
-
+    private int moveTypeID = -1;
+    public int MoveType;
     public virtual void Start()
     {
         //MaxHP = (1f + GetStatValue(StatName.BaseHealth)) * (1f + GetStatMuliply(StatName.BaseHealth));
+        moveTypeID = Animator.StringToHash("MoveType");
         InitializeController();
+    }
+    public void SetMoveType(int moveType)
+    {
+        if(moveType != MoveType)
+        {
+            animator.SetInteger(moveTypeID, moveType);
+            MoveType = moveType;
+        }
     }
     public void SetHPMax()
     {

@@ -4,13 +4,56 @@ using UnityEngine;
 
 public class PlayerController : BaseController
 {
+    public Rigidbody2D myBody;
+    float horizontal;
+    float vertical;
+    int movetype = 0;
     public override void InitializeController()
     {
         base.InitializeController();
         ChangeState(new PlayerAttackState());
     }
 
-    
+    public int GetMyBodyMoveType()
+    {
+        if (myBody == null)
+        {
+            myBody = GetComponent<Rigidbody2D>();
+        }
+
+        float horizontal = myBody.velocity.x;
+        float vertical = myBody.velocity.y;
+
+        if (Mathf.Abs(horizontal) > Mathf.Abs(vertical))
+        {
+            if (horizontal > 0)
+            {
+                // 오른쪽으로 움직임
+                movetype = 2;
+            }
+            else
+            {
+                // 왼쪽으로 움직임
+                movetype = 1;
+            }
+        }
+        else
+        {
+            if (vertical > 0)
+            {
+                // 위로 움직임
+                movetype = 3;
+            }
+            else
+            {
+                // 아래로 움직임
+                movetype = 0;
+            }
+        }
+
+        return movetype;
+    }
+
     //public void GetHit(float dmg)
     //{
     //    // 피해를 받으면 dmg 만큼 runtimeValue 에서 차감      
@@ -36,5 +79,5 @@ public class PlayerController : BaseController
     //    gameEvtHP.Raise();
     //}
 
-    
+
 }

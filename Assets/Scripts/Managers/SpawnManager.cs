@@ -15,6 +15,8 @@ public class SpawnManager : MonoBehaviour
     public float spawnInterval = 5.0f;
     public float minSpawnDistance = 10.0f;
     public float maxSpawnDistance = 50.0f;
+    public int maxSpawnEnemyCount = 10;
+    public int curLiveEnemy = 0;
 
     private float timeSinceLastSpawn;
 
@@ -40,16 +42,25 @@ public class SpawnManager : MonoBehaviour
         {
             timeSinceLastSpawn = 0;
             var enemyObject = SpawnEnemy(GetRandomSpawnPosition());
-            NormalEnemyController enemyController = enemyObject.GetComponent<NormalEnemyController>();
-            enemyController.InitializeController();
+            if(enemyObject != null)
+            {
+                NormalEnemyController enemyController = enemyObject.GetComponent<NormalEnemyController>();
+                enemyController.InitializeController();
+            }
+
         }
     }
 
     public GameObject SpawnEnemy(Vector3 spawnPosition)
     {
+        if(curLiveEnemy >= maxSpawnEnemyCount)
+        {
+            return null;
+        }
         GameObject enemyObject = enemyObjectPool.GetPooledObject();
         enemyObject.transform.position = spawnPosition;
         enemyObject.SetActive(true);
+        curLiveEnemy++;
         return enemyObject;
     }
     public GameObject SpawnItem(Vector3 spawnPosition)
