@@ -4,7 +4,7 @@ using UnityEngine;
 public class ChainShotBlast : MonoBehaviour, IPooledObject
 {
     private BaseController user;
-    public SpriteRenderer radius;
+    public Animator animator;
     private float blastRadius;
     //private LayerMask enemyLayer; 지금은 태그로 처리중
 
@@ -12,13 +12,14 @@ public class ChainShotBlast : MonoBehaviour, IPooledObject
     {
         this.user = user;
         this.blastRadius = (0.4f + user.GetStatValue(StatName.BlastRadius)) * (1f + user.GetStatMuliply(StatName.BlastRadius));
-        radius.transform.localScale = Vector3.one * blastRadius;
+        animator.transform.localScale = Vector3.one * blastRadius;
         //enemyLayer = LayerMask.GetMask("Enemy"); // 적이 있는 레이어 이름을 지정하세요.
         StartCoroutine(DealDamageAndReturnToPool());
     }
 
     private IEnumerator DealDamageAndReturnToPool()
     {
+        animator.Play("Hit4Ani", -1, 0);
         yield return new WaitForSeconds(0.1f); // 폭발 이펙트가 재생되는 동안 딜레이를 줍니다.
 
         Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, blastRadius);
@@ -31,7 +32,7 @@ public class ChainShotBlast : MonoBehaviour, IPooledObject
             enemy.GetComponent<BaseController>().GetHit(user.GetStatValue(StatName.ProjectileDamage) + 5);
         }
 
-        yield return new WaitForSeconds(0.2f); // 폭발 이펙트가 끝날 때까지 기다립니다.
+        yield return new WaitForSeconds(0.4f); // 폭발 이펙트가 끝날 때까지 기다립니다.
 
         // 오브젝트를 풀에 다시 반환합니다.
         SpawnManager.Instance.chainShotBlastObjectPool.ReturnToPool(gameObject);

@@ -13,7 +13,8 @@ public class ChainShotProjectile : MonoBehaviour, IPooledObject
     private Vector2 moveDirection = Vector2.up;
     private float lifeTime = 3f;
     private float currentLifeTime;
-
+    private float angle;
+    public GameObject projectileAni;
     public void Initialize(BaseController user)
     {
         this.user = user;
@@ -25,6 +26,8 @@ public class ChainShotProjectile : MonoBehaviour, IPooledObject
         Bounce();
         // 발사체의 생존 시간을 초기화합니다.
         currentLifeTime = lifeTime;
+        angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
+        projectileAni.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
 
     void Update()
@@ -38,6 +41,10 @@ public class ChainShotProjectile : MonoBehaviour, IPooledObject
     }
     private void MoveProjectile()
     {
+        //투사체 각도
+        angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
+        projectileAni.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        //투사체 이동
         transform.Translate(moveDirection * speed * Time.deltaTime);
     }
 
