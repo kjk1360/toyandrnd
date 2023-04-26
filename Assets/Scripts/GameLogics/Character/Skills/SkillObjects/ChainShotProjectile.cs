@@ -15,6 +15,7 @@ public class ChainShotProjectile : MonoBehaviour, IPooledObject
     private float currentLifeTime;
     private float angle;
     public GameObject projectileAni;
+    private Collider2D target;
     public void Initialize(BaseController user)
     {
         this.user = user;
@@ -89,13 +90,17 @@ public class ChainShotProjectile : MonoBehaviour, IPooledObject
                 if (distance < minDistance)
                 {
                     minDistance = distance;
-                    closestEnemy = collider.transform;
+                    if(target == null || target != collider)
+                    {
+                        closestEnemy = collider.transform;
+                    }
                 }
             }
         }
 
         if (closestEnemy != null)
         {
+            target = closestEnemy.GetComponent<Collider2D>();
             moveDirection = (closestEnemy.position - transform.position).normalized;
         }
     }
