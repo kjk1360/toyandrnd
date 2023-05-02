@@ -4,25 +4,42 @@ using UnityEngine;
 
 public class PassiveManager : MonoBehaviour
 {
-    public static PassiveManager Instance { get; private set; }
+    public static PassiveManager _instance { get; private set; }
     public int curLV = 1;
     public int MaxExp = 5;
     public int CurExp = 0;
     public GameObject PassivePopup;
     public PlayerController player;
+    public static PassiveManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<PassiveManager>();
+
+                if (_instance == null)
+                {
+                    GameObject singleton = new GameObject("PassiveManager");
+                    _instance = singleton.AddComponent<PassiveManager>();
+                    DontDestroyOnLoad(singleton);
+                }
+            }
+            return _instance;
+        }
+    }
+
     private void Awake()
     {
-        if (Instance == null)
+        if (_instance != null && _instance != this)
         {
-            Instance = this;
+            Destroy(this.gameObject);
         }
         else
         {
-            Destroy(gameObject);
-            return;
+            _instance = this;
+            DontDestroyOnLoad(this.gameObject);
         }
-
-        DontDestroyOnLoad(gameObject);
     }
 
     public void KillEnemy()

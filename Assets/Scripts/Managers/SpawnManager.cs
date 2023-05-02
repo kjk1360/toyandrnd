@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public static SpawnManager Instance { get; private set; }
+    public static SpawnManager _instance { get; private set; }
 
     //public ObjectPool enemyObjectPool;
     //public ObjectPool healItemObjectPool;
@@ -19,38 +19,67 @@ public class SpawnManager : MonoBehaviour
     public int curLiveEnemy = 0;
 
     private float timeSinceLastSpawn;
+    public static SpawnManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<SpawnManager>();
+
+                if (_instance == null)
+                {
+                    GameObject singleton = new GameObject("SpawnManager");
+                    _instance = singleton.AddComponent<SpawnManager>();
+                    DontDestroyOnLoad(singleton);
+                }
+            }
+            return _instance;
+        }
+    }
 
     private void Awake()
     {
-        if (Instance == null)
+        if (_instance != null && _instance != this)
         {
-            Instance = this;
+            Destroy(this.gameObject);
         }
         else
         {
-            Destroy(gameObject);
-            return;
+            _instance = this;
+            DontDestroyOnLoad(this.gameObject);
         }
-
-        DontDestroyOnLoad(gameObject);
     }
-    private void Update()
-    {
-        timeSinceLastSpawn += Time.deltaTime;
+    //private void Update()
+    //{
+    //    timeSinceLastSpawn += Time.deltaTime;
 
-        if (timeSinceLastSpawn >= spawnInterval)
+    //    if (timeSinceLastSpawn >= spawnInterval)
+    //    {
+    //        timeSinceLastSpawn = 0;
+    //        var enemyObject = SpawnEnemy(GetRandomSpawnPosition());
+    //        if(enemyObject != null)
+    //        {
+    //            NormalEnemyController enemyController = enemyObject.GetComponent<NormalEnemyController>();
+    //            enemyController.InitializeController();
+    //        }
+
+    //    }
+    //}
+    public IEnumerator SpawnEnemiesCoroutine()
+    {
+        while (true)
         {
-            timeSinceLastSpawn = 0;
             var enemyObject = SpawnEnemy(GetRandomSpawnPosition());
-            if(enemyObject != null)
+            if (enemyObject != null)
             {
                 NormalEnemyController enemyController = enemyObject.GetComponent<NormalEnemyController>();
                 enemyController.InitializeController();
             }
 
+            yield return new WaitForSeconds(spawnInterval);
         }
     }
-
     public GameObject SpawnEnemy(Vector3 spawnPosition)
     {
         if(curLiveEnemy >= maxSpawnEnemyCount)

@@ -32,11 +32,11 @@ MonoBehaviour:
   - ID: 4
     GroupID: 2000
     prefab: {fileID: 7357707648117247367, guid: 6de6f4dd769cab346a41a99cf64ddaf5, type: 3}
-    initialSize: 0
+    initialSize: 100
   - ID: 5
     GroupID: 2000
     prefab: {fileID: 7904725332847636958, guid: db2cf11aeb38f604084bd6efdccb1246, type: 3}
-    initialSize: 1
+    initialSize: 100
   - ID: 6
     GroupID: 1000
     prefab: {fileID: 6256859623296249201, guid: 0d0189c0451184e45a5f70ec3dd00c8a, type: 3}

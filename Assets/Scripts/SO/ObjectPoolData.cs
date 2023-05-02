@@ -6,6 +6,7 @@ public enum ObjectPoolGroup
 {
     Skill = 0,
     //스킬 키워드 별 그룹아이디 1~999
+    FireBall,
     Enemy = 1000,
     //적 별 그룹 아이디 1001~1999
     Scene = 2000,

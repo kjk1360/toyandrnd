@@ -27,6 +27,11 @@ public class ChainShot : SkillBase
         while (currentProjectile < projectileCount)
         {
             var projectile = SpawnManager.Instance.SpawnChainShot(user.transform.position);
+            if(projectile == null)
+            {
+                yield return new WaitForSeconds(fireRate);
+                continue;
+            }
             projectile.GetComponent<ChainShotProjectile>().Initialize(user);
 
             currentProjectile++;
