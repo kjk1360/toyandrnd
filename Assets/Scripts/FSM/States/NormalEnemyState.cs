@@ -73,7 +73,8 @@ public class NormalEnemyDeadState : State
             enemy.TryDropItem();
             PassiveManager.Instance.KillEnemy();
             SpawnManager.Instance.curLiveEnemy--;
-            SpawnManager.Instance.enemyObjectPool.ReturnToPool(enemy.gameObject);
+            PoolingManager.Instance.ReturnObject(enemy.gameObject);
+            //SpawnManager.Instance.enemyObjectPool.ReturnToPool(enemy.gameObject);
             //Object.Destroy(enemy.gameObject);
         }
     }

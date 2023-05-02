@@ -6,11 +6,11 @@ public class SpawnManager : MonoBehaviour
 {
     public static SpawnManager Instance { get; private set; }
 
-    public ObjectPool enemyObjectPool;
-    public ObjectPool healItemObjectPool;
-    public ObjectPool chainShotObjectPool;
-    public ObjectPool chainShotBlastObjectPool;
-    public ObjectPool powerItemObjectPool;
+    //public ObjectPool enemyObjectPool;
+    //public ObjectPool healItemObjectPool;
+    //public ObjectPool chainShotObjectPool;
+    //public ObjectPool chainShotBlastObjectPool;
+    //public ObjectPool powerItemObjectPool;
     public Transform player;
     public float spawnInterval = 5.0f;
     public float minSpawnDistance = 10.0f;
@@ -57,40 +57,44 @@ public class SpawnManager : MonoBehaviour
         {
             return null;
         }
-        GameObject enemyObject = enemyObjectPool.GetPooledObject();
-        enemyObject.transform.position = spawnPosition;
-        enemyObject.SetActive(true);
+        //GameObject enemyObject = enemyObjectPool.GetPooledObject();
+        //enemyObject.transform.position = spawnPosition;
+        //enemyObject.SetActive(true);
         curLiveEnemy++;
-        return enemyObject;
+        return PoolingManager.Instance.GetObjectByID(6, spawnPosition);
+    }
+    public GameObject SpawnBoss(Vector3 spawnPosition)
+    {
+        return PoolingManager.Instance.GetObjectByID(7, spawnPosition);
     }
     public GameObject SpawnItem(Vector3 spawnPosition)
     {
-        GameObject itemObject = healItemObjectPool.GetPooledObject();
-        itemObject.transform.position = spawnPosition;
-        itemObject.SetActive(true);
-        return itemObject;
+        //GameObject itemObject = healItemObjectPool.GetPooledObject();
+        //itemObject.transform.position = spawnPosition;
+        //itemObject.SetActive(true);
+        return PoolingManager.Instance.GetObjectByID(4, spawnPosition);
     }
 
     public GameObject SpawnChainShot(Vector3 spawnPosition)
     {
-        GameObject chainShotObject = chainShotObjectPool.GetPooledObject();
-        chainShotObject.transform.position = spawnPosition;
-        chainShotObject.SetActive(true);
-        return chainShotObject;
+        //GameObject chainShotObject = chainShotObjectPool.GetPooledObject();
+        //chainShotObject.transform.position = spawnPosition;
+        //chainShotObject.SetActive(true);
+        return PoolingManager.Instance.GetObjectByID(1, spawnPosition);
     }
     public GameObject SpawnChainShotBlast(Vector3 spawnPosition)
     {
-        GameObject chainShotBlastObject = chainShotBlastObjectPool.GetPooledObject();
-        chainShotBlastObject.transform.position = spawnPosition;
-        chainShotBlastObject.SetActive(true);
-        return chainShotBlastObject;
+        //GameObject chainShotBlastObject = chainShotBlastObjectPool.GetPooledObject();
+        //chainShotBlastObject.transform.position = spawnPosition;
+        //chainShotBlastObject.SetActive(true);
+        return PoolingManager.Instance.GetObjectByID(0, spawnPosition);
     }
     public GameObject SpawnPowerItem(Vector3 spawnPosition)
     {
-        GameObject powerItem = powerItemObjectPool.GetPooledObject();
-        powerItem.transform.position = spawnPosition;
-        powerItem.SetActive(true);
-        return powerItem;
+        //GameObject powerItem = powerItemObjectPool.GetPooledObject();
+        //powerItem.transform.position = spawnPosition;
+        //powerItem.SetActive(true);
+        return PoolingManager.Instance.GetObjectByID(5, spawnPosition);
     }
 
     private Vector3 GetRandomSpawnPosition()

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ChainShotProjectile : MonoBehaviour, IPooledObject
+public class ChainShotProjectile : MonoBehaviour
 {
     public int chainCount;
     private float blastRadius;
@@ -36,7 +36,7 @@ public class ChainShotProjectile : MonoBehaviour, IPooledObject
         currentLifeTime -= Time.deltaTime;
         if (currentLifeTime <= 0)
         {
-            SpawnManager.Instance.chainShotObjectPool.ReturnToPool(gameObject);
+            PoolingManager.Instance.ReturnObject(gameObject);
         }
         MoveProjectile();
     }
@@ -61,7 +61,8 @@ public class ChainShotProjectile : MonoBehaviour, IPooledObject
             }
             else
             {
-                SpawnManager.Instance.chainShotObjectPool.ReturnToPool(gameObject);
+                PoolingManager.Instance.ReturnObject(gameObject);
+                //SpawnManager.Instance.chainShotObjectPool.ReturnToPool(gameObject);
             }
         }
     }
@@ -103,10 +104,5 @@ public class ChainShotProjectile : MonoBehaviour, IPooledObject
             target = closestEnemy.GetComponent<Collider2D>();
             moveDirection = (closestEnemy.position - transform.position).normalized;
         }
-    }
-
-    void IPooledObject.OnReturnToPool()
-    {
-        gameObject.SetActive(false);
     }
 }

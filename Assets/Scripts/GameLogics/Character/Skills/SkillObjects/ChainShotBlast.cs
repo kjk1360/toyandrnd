@@ -1,12 +1,13 @@
 using System.Collections;
 using UnityEngine;
 
-public class ChainShotBlast : MonoBehaviour, IPooledObject
+public class ChainShotBlast : MonoBehaviour
 {
     private BaseController user;
     public Animator animator;
     private float blastRadius;
     //private LayerMask enemyLayer; 지금은 태그로 처리중
+    public long ID { get; set; }
 
     public void Initialize(BaseController user)
     {
@@ -35,7 +36,8 @@ public class ChainShotBlast : MonoBehaviour, IPooledObject
         yield return new WaitForSeconds(0.4f); // 폭발 이펙트가 끝날 때까지 기다립니다.
 
         // 오브젝트를 풀에 다시 반환합니다.
-        SpawnManager.Instance.chainShotBlastObjectPool.ReturnToPool(gameObject);
+        PoolingManager.Instance.ReturnObject(gameObject);
+        //SpawnManager.Instance.chainShotBlastObjectPool.ReturnToPool(gameObject);
     }
 
     private void OnDrawGizmos()
@@ -45,8 +47,4 @@ public class ChainShotBlast : MonoBehaviour, IPooledObject
         Gizmos.DrawWireSphere(transform.position, blastRadius);
     }
 
-    void IPooledObject.OnReturnToPool()
-    {
-        gameObject.SetActive(false);
-    }
 }

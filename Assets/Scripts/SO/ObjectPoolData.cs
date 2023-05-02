@@ -26,4 +26,29 @@ public class ObjectPoolData : ScriptableObject
         public GameObject prefab;
         public int initialSize;
     }
+    public List<ObjectPoolItem> GetListByGroupID(ObjectPoolGroup groupID)
+    {
+        var list = new List<ObjectPoolItem>();
+
+        foreach(var item in objectPoolItems)
+        {
+            if(item.GroupID == groupID)
+            {
+                list.Add(item);
+            }
+        }
+        return list;
+    }
+
+    public ObjectPoolItem Find(long id)
+    {
+        foreach(var item in objectPoolItems)
+        {
+            if(item.ID == id)
+            {
+                return item;
+            }
+        }
+        return new ObjectPoolItem();
+    }
 }

@@ -36,7 +36,8 @@ public class HealItemUsedState : State
         if (controller is HealItemController healItem)
         {
             // 사용될때임
-            SpawnManager.Instance.healItemObjectPool.ReturnToPool(healItem.gameObject);
+            PoolingManager.Instance.ReturnObject(healItem.gameObject);
+            //SpawnManager.Instance.healItemObjectPool.ReturnToPool(healItem.gameObject);
         }
     }
 

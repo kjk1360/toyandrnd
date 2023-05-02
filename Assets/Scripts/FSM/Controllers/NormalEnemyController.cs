@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NormalEnemyController : BaseController, IDropItem, IPooledObject
+public class NormalEnemyController : BaseController, IDropItem
 {
     public PlayerController player;
     public float speed;
@@ -16,6 +16,8 @@ public class NormalEnemyController : BaseController, IDropItem, IPooledObject
 
     GameObject IDropItem.itemPrefab => itemPrefab;
     float IDropItem.dropChance => dropChance;
+
+    public long ID { get; set; }
 
     public override void InitializeController()
     {
@@ -94,9 +96,4 @@ public class NormalEnemyController : BaseController, IDropItem, IPooledObject
         ChangeState(new NormalEnemyDeadState());
     }
 
-    public void OnReturnToPool()
-    {
-        gameObject.SetActive(false);
-        InitializeController();
-    }
 }

@@ -43,7 +43,7 @@ MonoBehaviour:
     initialSize: 100
   - ID: 7
     GroupID: 1000
-    prefab: {fileID: 0}
+    prefab: {fileID: 6256859623296249201, guid: 08966304f5a7b0d429a3fd1a0fd262a4, type: 3}
     initialSize: 1
   - ID: 8
     GroupID: 1000
