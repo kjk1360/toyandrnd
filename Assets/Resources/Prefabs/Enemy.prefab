@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2322962780599308719}
   - component: {fileID: 2615249381078072394}
   - component: {fileID: 8097241995166062396}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: HPBarFill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 3005252500262996326}
   - component: {fileID: 4217723312089286492}
   - component: {fileID: 1055407324978330389}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: EnemyAni
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 196088739727651130}
   - component: {fileID: 702033416989422560}
   - component: {fileID: 2254562567387987975}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: HPBarCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 10194784814084920}
   - component: {fileID: 4823297310097527265}
   - component: {fileID: 2283565655632139360}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: HPBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -417,7 +417,7 @@ GameObject:
   - component: {fileID: 6350227515749976695}
   - component: {fileID: 2956505450856787686}
   - component: {fileID: 5403735476480472083}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -560,6 +560,8 @@ MonoBehaviour:
         m_CallState: 2
   animator: {fileID: 1055407324978330389}
   MoveType: 0
+  rotationTime: 0.2
+  spine: {fileID: 0}
   player: {fileID: 0}
   speed: 1
   itemPrefab: {fileID: 7357707648117247367, guid: 6de6f4dd769cab346a41a99cf64ddaf5, type: 3}

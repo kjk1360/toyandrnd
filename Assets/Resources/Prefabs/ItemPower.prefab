@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 341170594474700930}
   - component: {fileID: 4568852746594207185}
   - component: {fileID: 6606239891359650553}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: CoinAni
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,6 +110,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7904725332847636958
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,7 +123,7 @@ GameObject:
   - component: {fileID: 940849792659708166}
   - component: {fileID: 5883464486558692104}
   - component: {fileID: 104415187195364389}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: ItemPower
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -194,6 +195,8 @@ MonoBehaviour:
       m_Calls: []
   animator: {fileID: 0}
   MoveType: 0
+  rotationTime: 0.2
+  spine: {fileID: 0}
   player: {fileID: 0}
   healValue: 0
   addedStat: 2

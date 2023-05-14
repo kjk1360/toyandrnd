@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4659080779490714696}
   - component: {fileID: 4921679168443031519}
   - component: {fileID: 2800403447701437998}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Blast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,6 +105,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6314973439909354201
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6807217852878114948}
   - component: {fileID: 6973537683385606464}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: ChainShotBlast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
