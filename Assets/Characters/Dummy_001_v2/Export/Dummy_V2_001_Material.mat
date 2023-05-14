@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Dummy_001_v2_Dummy_001_v2_4
+  m_Name: Dummy_V2_001_Material
   m_Shader: {fileID: 4800000, guid: 1e8a610c9e01c3648bac42585e5fc676, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
@@ -22,7 +22,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: b359c13c6910d914fbf8ddfe47272c3a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9ab0a11c6c38a024c8dab8a4fb79b0b2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []

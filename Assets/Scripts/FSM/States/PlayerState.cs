@@ -9,7 +9,7 @@ public class PlayerAttackState : State
         if (controller is PlayerController player)
         {
             // 공격(이동, 멈춤) 상태에 들어왔을 때 실행할 로직
-            player.SetMoveType(0);
+            player.SetPlayerMoveType(0);
         }
     }
 
@@ -28,7 +28,7 @@ public class PlayerAttackState : State
                 }
             }
 
-            player.SetMoveType(player.GetMyBodyMoveType());
+            player.SetPlayerMoveType(player.GetMyBodyMoveType());
 
         }
     }

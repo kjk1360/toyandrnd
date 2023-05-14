@@ -21,34 +21,46 @@ public class PlayerController : BaseController
             myBody = GetComponent<Rigidbody2D>();
         }
 
-        float horizontal = myBody.velocity.x;
-        float vertical = myBody.velocity.y;
+        //float horizontal = myBody.velocity.x;
+        //float vertical = myBody.velocity.y;
 
-        if (Mathf.Abs(horizontal) > Mathf.Abs(vertical))
+        //if (Mathf.Abs(horizontal) > Mathf.Abs(vertical))
+        //{
+        //    if (horizontal > 0)
+        //    {
+        //        // 오른쪽으로 움직임
+        //        movetype = 2;
+        //    }
+        //    else
+        //    {
+        //        // 왼쪽으로 움직임
+        //        movetype = 1;
+        //    }
+        //}
+        //else
+        //{
+        //    if (vertical > 0)
+        //    {
+        //        // 위로 움직임
+        //        movetype = 3;
+        //    }
+        //    else
+        //    {
+        //        // 아래로 움직임
+        //        movetype = 0;
+        //    }
+        //}
+
+        float horizontal = myBody.velocity.x;
+        if (horizontal > 0)
         {
-            if (horizontal > 0)
-            {
-                // 오른쪽으로 움직임
-                movetype = 2;
-            }
-            else
-            {
-                // 왼쪽으로 움직임
-                movetype = 1;
-            }
+            // 오른쪽으로 움직임
+            movetype = 0;
         }
-        else
+        else if(horizontal < 0)
         {
-            if (vertical > 0)
-            {
-                // 위로 움직임
-                movetype = 3;
-            }
-            else
-            {
-                // 아래로 움직임
-                movetype = 0;
-            }
+            // 왼쪽으로 움직임
+            movetype = 1;
         }
 
         return movetype;

@@ -78,7 +78,7 @@ public class PoolingManager : MonoBehaviour
             {
                 foreach (var data in groupList)
                 {
-                    if (data.prefab == null)
+                    if (data.prefab == null || poolDictionary.ContainsKey(data.ID))
                     {
                         continue;
                     }

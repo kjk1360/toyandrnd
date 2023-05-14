@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Spine.Unity;
 
 /// <summary>
 /// 1. 유한 상태머신의 상태 컨트롤러 역할
@@ -27,6 +28,11 @@ public abstract class BaseController : MonoBehaviour
     public State currentState;
     private int moveTypeID = -1;
     public int MoveType;
+    bool isChangingDirection = false;
+    float elapsedTime = 0f;
+    public float rotationTime = 0.2f; // 회전에 걸리는 시간
+    private Coroutine directionCo;
+    public SkeletonAnimation spine;
     public virtual void Start()
     {
         //MaxHP = (1f + GetStatValue(StatName.BaseHealth)) * (1f + GetStatMuliply(StatName.BaseHealth));
@@ -41,6 +47,47 @@ public abstract class BaseController : MonoBehaviour
             MoveType = moveType;
         }
     }
+
+    public void SetPlayerMoveType(int moveType)
+    {
+        if (moveType != MoveType)
+        {
+            //animator.SetInteger(moveTypeID, moveType);
+            MoveType = moveType;
+            isChangingDirection = true;
+            if(directionCo != null)
+            {
+                StopCoroutine(directionCo);
+            }
+            directionCo = StartCoroutine(ChangeDirectionCoroutine());
+        }
+        isChangingDirection = false;
+    }
+    private IEnumerator ChangeDirectionCoroutine()
+    {
+        if (!isChangingDirection)
+        {
+            elapsedTime = rotationTime - elapsedTime;
+        }
+        else
+        {
+            elapsedTime = 0f;
+        }
+
+        Vector3 startScale = spine.transform.localScale;
+        Vector3 targetScale = MoveType == 0 ? new Vector3(-1, 1, 1) : new Vector3(1, 1, 1);
+
+        while (elapsedTime < rotationTime)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsedTime / rotationTime);
+            spine.transform.localScale = Vector3.Lerp(startScale, targetScale, t);
+            yield return null;
+        }
+
+        isChangingDirection = false;
+    }
+
     public void SetHPMax()
     {
         var diff = MaxHP - (1f + GetStatValue(StatName.BaseHealth)) * (1f + GetStatMuliply(StatName.BaseHealth));

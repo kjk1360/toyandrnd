@@ -1,0 +1,61 @@
+Dummy_V2_001.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+scale:0.5
+Head
+bounds:217,385,282,216
+offsets:0,0,283,216
+rotate:90
+Layer 11
+bounds:744,815,160,196
+Layer 12
+bounds:217,188,155,195
+offsets:0,0,156,196
+Layer 13
+bounds:2,2,205,138
+offsets:0,6,205,144
+Layer 14
+bounds:411,678,85,87
+offsets:3,0,88,88
+Layer 15
+bounds:906,817,38,31
+Layer 17
+bounds:744,777,36,71
+offsets:0,0,37,71
+rotate:90
+Layer 18
+bounds:217,151,35,72
+offsets:1,0,37,72
+rotate:90
+Layer 20
+bounds:374,302,59,81
+Layer 22
+bounds:2,142,213,525
+Layer 23
+bounds:574,701,41,64
+offsets:1,1,44,68
+Layer 24
+bounds:498,694,74,71
+Layer 25
+bounds:817,778,36,35
+offsets:1,0,39,36
+Layer 26
+bounds:291,161,25,42
+rotate:90
+Layer 27
+bounds:906,928,75,83
+offsets:7,0,82,90
+Layer 28
+bounds:906,850,59,76
+Layer 29
+bounds:983,946,65,19
+rotate:90
+Layer 30
+bounds:374,240,60,23
+offsets:0,0,60,24
+rotate:90
+Layer 5
+bounds:411,767,331,244
+Layer 7
+bounds:2,669,407,342
