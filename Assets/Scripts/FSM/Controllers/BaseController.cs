@@ -59,7 +59,19 @@ public abstract class BaseController : MonoBehaviour
             {
                 StopCoroutine(directionCo);
             }
-            directionCo = StartCoroutine(ChangeDirectionCoroutine());
+            if(moveType == 1)
+            {
+                //spine.transform.localScale = new Vector3(-1, 1, 1);
+                spine.Skeleton.ScaleX = -1;
+            }
+            else
+            {
+                //spine.transform.localScale = Vector3.one;
+                spine.Skeleton.ScaleX = 1;
+            }
+            //MoveType == 0 ? new Vector3(-1, 1, 1) : new Vector3(1, 1, 1);
+
+            //directionCo = StartCoroutine(ChangeDirectionCoroutine());
         }
         isChangingDirection = false;
     }

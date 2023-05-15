@@ -55,12 +55,12 @@ public class PlayerController : BaseController
         if (horizontal > 0)
         {
             // 오른쪽으로 움직임
-            movetype = 0;
+            movetype = 1;
         }
         else if(horizontal < 0)
         {
             // 왼쪽으로 움직임
-            movetype = 1;
+            movetype = 0;
         }
 
         return movetype;
