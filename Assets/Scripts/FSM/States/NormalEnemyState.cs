@@ -64,12 +64,40 @@ public class NormalEnemyPosChangeState : State
         // 대기 상태에서 나갈 때 실행할 로직
     }
 }
+public class StunState : State
+{
+    public override void EnterState(BaseController controller)
+    {
+        if (controller is NormalEnemyController enemy)
+        {
+        }
+        // 대기 상태에 들어왔을 때 실행할 로직
+        // 플레이어 추적 및 적절한 배치 위치로 pos move
+    }
+
+    public override void UpdateState(BaseController controller)
+    {
+        if (controller is NormalEnemyController enemy)
+        {
+        }
+        // 대기 상태에서 실행할 로직
+    }
+
+    public override void ExitState(BaseController controller)
+    {
+        if (controller is NormalEnemyController enemy)
+        {
+        }
+        // 대기 상태에서 나갈 때 실행할 로직
+    }
+}
 public class NormalEnemyDeadState : State
 {
     public override void EnterState(BaseController controller)
     {
         if (controller is NormalEnemyController enemy)
         {
+            enemy.MyTrigger.Add((long)ControllerTrigger.Death);
             enemy.TryDropItem();
             PassiveManager.Instance.KillEnemy();
             SpawnManager.Instance.curLiveEnemy--;
@@ -86,6 +114,7 @@ public class NormalEnemyDeadState : State
 
     public override void ExitState(BaseController controller)
     {
+        controller.MyTrigger.Remove((long)ControllerTrigger.Death);
         // 적이 죽은 상태에서는 다른 상태로 전환되지 않습니다.
     }
 }

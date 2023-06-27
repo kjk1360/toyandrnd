@@ -10,6 +10,7 @@ public class PlayerAttackState : State
         {
             // 공격(이동, 멈춤) 상태에 들어왔을 때 실행할 로직
             player.SetPlayerMoveType(0);
+            player.attack = player.StartCoroutine(player.UpdateAttack());
         }
     }
 
@@ -20,13 +21,13 @@ public class PlayerAttackState : State
             //이동, 멈춤 상태에서 실행하는 로직, 공격하는 로직이다
 
             // 스킬 리스트를 순회하며 쿨다운이 끝난 스킬을 사용
-            foreach (SkillBase skill in player.skills)
-            {
-                if (!skill.IsOnCooldown())
-                {
-                    player.UseSkill(player.skills.IndexOf(skill));
-                }
-            }
+            //foreach (SkillBase skill in player.skills)
+            //{
+            //    if (!skill.IsOnCooldown())
+            //    {
+            //        player.UseSkill(player.skills.IndexOf(skill));
+            //    }
+            //}
 
             player.SetPlayerMoveType(player.GetMyBodyMoveType());
 
@@ -38,6 +39,7 @@ public class PlayerAttackState : State
         if (controller is PlayerController player)
         {
             // 상태에서 나갈 때 실행할 로직
+            player.StopCoroutine(player.attack);
         }
     }
 }

@@ -1,0 +1,31 @@
+Mon_002.png
+size:512,512
+filter:Linear,Linear
+pma:true
+Layer 2
+bounds:240,310,60,69
+offsets:1,1,64,80
+Layer 3
+bounds:330,399,99,119
+offsets:2,0,101,120
+rotate:90
+Layer 5
+bounds:192,381,117,136
+rotate:90
+Layer 6
+bounds:119,278,119,101
+offsets:0,0,119,103
+Shadow
+bounds:2,381,188,117
+bb_01
+bounds:2,122,106,115
+offsets:7,0,113,120
+bb_02
+bounds:2,239,115,140
+offsets:3,2,119,143
+bb_03
+bounds:2,2,97,118
+offsets:4,1,101,121
+bb_04
+bounds:451,427,42,71
+offsets:1,0,44,72

@@ -1,0 +1,29 @@
+BossMon_001.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+L_Arm
+bounds:518,734,164,268
+L_Leg
+bounds:2,2,143,275
+offsets:0,37,145,312
+Layer 2
+bounds:436,595,80,85
+Layer 3
+bounds:290,186,92,91
+Layer 5
+bounds:2,279,432,401
+offsets:6,0,438,401
+Layer 6
+bounds:518,644,56,88
+offsets:2,2,59,91
+Layer 7
+bounds:800,910,97,92
+offsets:0,1,97,94
+Layer 9
+bounds:147,94,141,183
+R_Arm
+bounds:684,765,114,237
+offsets:0,0,114,239
+Shadow
+bounds:2,682,514,320

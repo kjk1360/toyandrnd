@@ -1,0 +1,75 @@
+BossMon_002.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+Back_Cloak
+bounds:294,824,198,421
+rotate:90
+Body
+bounds:2,613,290,409
+offsets:1,0,291,409
+Front_Cloak
+bounds:294,605,122,308
+offsets:0,1,122,309
+rotate:90
+Layer 1
+bounds:211,320,66,34
+offsets:1,0,67,34
+Layer 10
+bounds:58,5,50,55
+offsets:1,1,52,56
+rotate:90
+Layer 11
+bounds:2,2,53,54
+offsets:1,1,54,56
+rotate:90
+Layer 13
+bounds:460,479,124,143
+offsets:1,1,125,144
+rotate:90
+Layer 14
+bounds:923,863,39,78
+offsets:1,0,41,78
+rotate:90
+Layer 15
+bounds:292,353,125,143
+offsets:0,0,125,144
+rotate:90
+Layer 16
+bounds:604,649,39,78
+offsets:0,1,39,80
+Layer 17
+bounds:115,22,66,33
+offsets:0,13,66,46
+Layer 2
+bounds:652,746,76,43
+offsets:0,0,77,44
+rotate:90
+Layer 3
+bounds:211,356,71,36
+offsets:1,0,72,37
+Layer 4
+bounds:717,904,118,298
+rotate:90
+Layer 5
+bounds:2,177,207,434
+Layer 6
+bounds:292,480,166,123
+offsets:1,0,167,124
+Layer 7
+bounds:211,394,79,217
+offsets:12,11,93,228
+Layer 8
+bounds:717,829,73,204
+rotate:90
+Layer 9
+bounds:2,57,196,118
+offsets:0,0,196,119
+String_1
+bounds:294,729,356,93
+String_2
+bounds:211,263,39,55
+offsets:0,0,47,55
+String_3
+bounds:211,212,41,49
+offsets:16,0,59,49

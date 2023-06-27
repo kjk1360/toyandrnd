@@ -70,7 +70,7 @@ public class NormalEnemyController : BaseController, IDropItem
         //임시로 적과 플레이어가 충돌하면 죽는것으로 처리
         if (collision.gameObject.CompareTag("Player"))
         {
-            player.GetHit(1);
+            player.GetDamageByHit(1);
         }
     }
     public void TryDropItem()
@@ -83,9 +83,9 @@ public class NormalEnemyController : BaseController, IDropItem
             SpawnManager.Instance.SpawnPowerItem(transform.position);
         }
     }
-    public override void GetHit(float dmg)
+    public override void GetDamageByHit(float dmg)
     {
-        base.GetHit(dmg);
+        base.GetDamageByHit(dmg);
         if(HP <= 0)
         {
             Die();

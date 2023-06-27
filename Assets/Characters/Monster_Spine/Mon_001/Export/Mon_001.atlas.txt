@@ -1,0 +1,36 @@
+Mon_001.png
+size:256,256
+filter:Linear,Linear
+pma:true
+Head
+bounds:2,123,142,131
+L_Leg copy
+bounds:146,76,54,71
+offsets:0,4,56,76
+rotate:90
+L_Leg
+bounds:146,76,54,71
+offsets:0,4,56,76
+rotate:90
+Layer 1 copy
+bounds:219,102,28,35
+offsets:0,1,29,38
+rotate:90
+Layer 1
+bounds:219,102,28,35
+offsets:0,1,29,38
+rotate:90
+Layer 2
+bounds:189,32,37,42
+offsets:0,1,39,43
+Layer 2 copy
+bounds:144,37,37,43
+offsets:0,0,39,43
+rotate:90
+Layer 3
+bounds:146,132,122,103
+offsets:0,1,123,104
+rotate:90
+Shadow
+bounds:2,34,140,87
+offsets:1,1,142,89

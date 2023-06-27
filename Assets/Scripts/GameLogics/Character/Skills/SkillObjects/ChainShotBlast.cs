@@ -30,7 +30,7 @@ public class ChainShotBlast : MonoBehaviour
             // 예를 들어, 아래와 같이 데미지를 처리할 수 있습니다.
             // enemy.GetComponent<EnemyController>().TakeDamage(user.GetStatValue(StatName.ProjectileDamage));
             if(enemy.gameObject.CompareTag("Enemy"))
-            enemy.GetComponent<BaseController>().GetHit(user.GetStatValue(StatName.ProjectileDamage) + 5);
+            enemy.GetComponent<BaseController>().GetDamageByHit(user.GetStatValue(StatName.ProjectileDamage) + 5);
         }
 
         yield return new WaitForSeconds(0.4f); // 폭발 이펙트가 끝날 때까지 기다립니다.
